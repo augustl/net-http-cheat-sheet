@@ -1,7 +1,7 @@
 require "net/https"
 require "uri"
 
-uri = URI.parse("https://secure.com")
+uri = URI.parse("https://secure.com/")
 http = 
 http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE

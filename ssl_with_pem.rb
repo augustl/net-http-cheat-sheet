@@ -1,7 +1,7 @@
 require "net/https"
 require "uri"
 
-uri = URI.parse("https://secure.com")
+uri = URI.parse("https://secure.com/")
 pem = File.read("/path/to/my.pem")
 http = Net::HTTP.new(uri.host, uri.port)
 http.use_ssl = true
