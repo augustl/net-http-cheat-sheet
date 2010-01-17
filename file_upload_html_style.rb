@@ -22,3 +22,11 @@ request.body = post_body.join
 request["Content-Type"] = "multipart/form-data, boundary=#{BOUNDARY}"
 
 http.request(request)
+
+# Alternative method, using Nick Sieger's multipart-post gem
+require "rubygems"
+require "net/http/post/multipart"
+
+reqest = Net::HTTP::Post::Multipart.new uri.request_uri, "file" => UploadIO.new(file, "application/octet-stream")
+http = Net::HTTP.new(uri.host, uri.port)
+http.request(request)
