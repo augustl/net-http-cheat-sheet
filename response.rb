@@ -8,7 +8,11 @@ request = Net::HTTP::Get.new(uri.request_uri)
 
 response = http.request(request)
 
-response.code             # => 301
-response.body             # => The body (HTML, XML, blob, whatever)
+puts response.code             # => 301
+puts response.body             # => The body (HTML, XML, blob, whatever)
 # Headers are lowercased
-response["cache-control"] # => public, max-age=2592000
+puts response["cache-control"] # => public, max-age=2592000
+
+# Listing all headers
+puts "  All headers:"
+response.each_header { |h| puts "#{h} = #{response[h]}" }
