@@ -8,11 +8,14 @@ request = Net::HTTP::Get.new(uri.request_uri)
 
 response = http.request(request)
 
-puts response.code             # => 301
-puts response.body             # => The body (HTML, XML, blob, whatever)
+response.code             # => 301
+response.body             # => The body (HTML, XML, blob, whatever)
 # Headers are lowercased
-puts response["cache-control"] # => public, max-age=2592000
+response["cache-control"] # => public, max-age=2592000
 
 # Listing all headers
-puts "  All headers:"
-response.each_header { |h| puts "#{h} = #{response[h]}" }
+response.each_header { |h| do_something(h, response[h]) } # => location = http://www.google.com/
+                                                          # => content-type = text/html; charset=UTF-8
+                                                          # => cache-control = public, max-age=2592000
+                                                          # etc...
+ 
