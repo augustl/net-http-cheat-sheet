@@ -20,10 +20,10 @@ store.set_default_paths
 # You can also manually provide certs to the store. Download a cert for
 # ssltest7 at https://www.thawte.com/roots and provide the full path to
 # that file here, and remove `set_default_paths`.
-store.add_file("/path/to/thawte_Primary_Root_CA.pem")
+store.add_file("/path/to/cert.pem")
 
 # Or add a OpenSSL Ruby object, instead of a string.
-store.add_cert(OpenSSL::X509::Certificate.new(File.read("/path/to/thawte_Primary_Root_CA.pem")))
+store.add_cert(OpenSSL::X509::Certificate.new(File.read("/path/to/cert.pem")))
 
 http.cert_store = store
 
