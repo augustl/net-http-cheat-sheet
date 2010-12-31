@@ -8,15 +8,17 @@ http.use_ssl = true
 # You can use a certificate to verify the server you're connecting to is the
 # server you indented to connect to.
 http.verify_mode = OpenSSL::SSL::VERIFY_PEER
-store = OpenSSL::X509::Store.new
+http.cert = OpenSSL::X509::Certificate.new(File.read("/path/to/cert.pem"))
 
-# Use all system root certificates. Most setups have root certs for verisign,
-# entrust, thawte, etc installed.
+# You can also use a SSL store to automatically use all the certs installed on
+# your systems. Most setups have root certs for verisign, entrust, thawte, etc
+#installed.
+store = OpenSSL::X509::Store.new
 store.set_default_paths
 
 # You can also manually provide certs to the store. Download a cert for
 # ssltest7 at https://www.thawte.com/roots and provide the full path to
-# that file here.
+# that file here, and remove `set_default_paths`.
 store.add_file("/path/to/thawte_Primary_Root_CA.pem")
 
 # Or add a OpenSSL Ruby object.
