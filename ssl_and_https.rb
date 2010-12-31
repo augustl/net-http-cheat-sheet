@@ -1,6 +1,7 @@
 require "net/https"
 require "uri"
 
+# This URL is Thawte's SSL test site.
 uri = URI.parse("https://ssltest7.bbtest.net")
 http = Net::HTTP.new(uri.host, uri.port)
 http.use_ssl = true
@@ -12,7 +13,7 @@ http.cert = OpenSSL::X509::Certificate.new(File.read("/path/to/cert.pem"))
 
 # You can also use a SSL store to automatically use all the certs installed on
 # your systems. Most setups have root certs for verisign, entrust, thawte, etc
-#installed.
+# installed.
 store = OpenSSL::X509::Store.new
 store.set_default_paths
 
@@ -21,7 +22,7 @@ store.set_default_paths
 # that file here, and remove `set_default_paths`.
 store.add_file("/path/to/thawte_Primary_Root_CA.pem")
 
-# Or add a OpenSSL Ruby object.
+# Or add a OpenSSL Ruby object, instead of a string.
 store.add_cert(OpenSSL::X509::Certificate.new(File.read("/path/to/thawte_Primary_Root_CA.pem")))
 
 http.cert_store = store
