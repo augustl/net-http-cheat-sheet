@@ -17,8 +17,8 @@ response.status
 
 # You can specify custom CA certs. If your production system only connects to
 # one particular server, you should specify these, and bundle them with your
-# app, so that you don't depend on the pre-installed certs on the system that
-# may or may not exist.
+# app, so that you don't depend OS level pre-installed certificates in the
+# production environment.
 http = Net::HTTP.new("verysecure.com", 443)
 http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_PEER
