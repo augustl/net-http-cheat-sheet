@@ -37,7 +37,7 @@ response = http.request(Net::HTTP::Get.new("/"))
 # client, i.e. you. The server you connect to gets the certificate you specify,
 # and they can use it to check who signed the certificate, and use the
 # certificate fingerprint to identify exactly which certificate you're using.
-http = Net::HTTP.new("ssltest7.bbtest.net", 443)
+http = Net::HTTP.new("verysecure.com", 443)
 http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_PEER
 http.key = OpenSSL::PKey::RSA.new(File.read("/path/to/client.key"), "optional passphrase argument")
