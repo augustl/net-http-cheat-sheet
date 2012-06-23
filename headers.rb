@@ -9,3 +9,19 @@ request["User-Agent"] = "My Ruby Script"
 request["Accept"] = "*/*"
 
 response = http.request(request)
+
+# Get specific header
+response["content-type"]
+# => "text/html; charset=UTF-8"
+
+# Iterate all response headers.
+response.each_header do |key, value|
+  p "#{key} => #{value}"
+end
+# => "location => http://www.google.com/"
+# => "content-type => text/html; charset=UTF-8"
+# ...
+
+# Alternatively, reach into private APIs.
+p response.instance_variable_get("@header")
+# => {"location"=>["http://www.google.com/"], "content-type"=>["text/html; charset=UTF-8"], ...}
