@@ -1,7 +1,0 @@
-h1. Ruby Net::HTTP cheat sheet
-
-A bunch of common HTTP use cases implemented with Ruby's <code>Net::HTTP</code> library.
-
-h1. Fork
-
-If you want to add or change something, fork and send me a pull request.
